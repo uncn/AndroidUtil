@@ -22,12 +22,16 @@ public class ScreenUtils {
     }
 
     /**
-     * 获取屏幕的宽度（单位：px）
-     *
-     * @param context 上下文
-     * @return 屏幕宽px
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：获取屏幕的宽度 (单位：px)
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：屏幕宽度
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
     public static int getScreenWidth(Context context) {
+        context = context.getApplicationContext();
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();           // 创建了一张白纸
         windowManager.getDefaultDisplay().getMetrics(dm);   // 给白纸设置宽高
@@ -35,12 +39,16 @@ public class ScreenUtils {
     }
 
     /**
-     * 获取屏幕的高度（单位：px）
-     *
-     * @param context 上下文
-     * @return 屏幕高px
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：获取屏幕的高度 (单位：px)
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：屏幕高度
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
     public static int getScreenHeight(Context context) {
+        context = context.getApplicationContext();
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();           // 创建了一张白纸
         windowManager.getDefaultDisplay().getMetrics(dm);   // 给白纸设置宽高
@@ -48,53 +56,76 @@ public class ScreenUtils {
     }
 
     /**
-     * 设置屏幕为横屏
-     * <p>还有一种就是在Activity中加属性android:screenOrientation="landscape"</p>
-     * <p>不设置Activity的android:configChanges时，切屏会重新调用各个生命周期，切横屏时会执行一次，切竖屏时会执行两次</p>
-     * <p>设置Activity的android:configChanges="orientation"时，切屏还是会重新调用各个生命周期，切横、竖屏时只会执行一次</p>
-     * <p>设置Activity的android:configChanges="orientation|keyboardHidden|screenSize"（4.0以上必须带最后一个参数）时
-     * 切屏不会重新调用各个生命周期，只会执行onConfigurationChanged方法</p>
-     *
-     * @param activity activity
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：设置屏幕为横屏
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：activity
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：void
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 说明：1、还有一种就是在 Activity 中加属性 android:screenOrientation="landscape"，
+     * ║
+     * ║      2、不设置 Activity 的android:configChanges 时，切屏会重新调用各个生命周期，切横屏时会执行一次，
+     * ║      切竖屏时会执行两次；
+     * ║
+     * ║      3、设置 Activity 的 android:configChanges="orientation" 时，切屏还是会重新调用各个生命周期，
+     * ║      切横、竖屏时只会执行一次；
+     * ║
+     * ║      4、设置 Activity 的 android:configChanges="orientation|keyboardHidden|screenSize"（4.0
+     * ║      以上必须带最后一个参数）时切屏不会重新调用各个生命周期，只会执行onConfigurationChanged 方法
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
     public static void setLandscape(Activity activity) {
         activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
     /**
-     * 设置屏幕为竖屏
-     *
-     * @param activity activity
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：设置屏幕为竖屏
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：activity
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：void
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
     public static void setPortrait(Activity activity) {
         activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     /**
-     * 判断是否横屏
-     *
-     * @param context 上下文
-     * @return {@code true}: 是<br>{@code false}: 否
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：判断是否横屏
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：boolean {true:是} {false:否}
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
     public static boolean isLandscape(Context context) {
         return context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
     }
 
     /**
-     * 判断是否竖屏
-     *
-     * @param context 上下文
-     * @return {@code true}: 是<br>{@code false}: 否
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：判断是否竖屏
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：boolean {true:是} {false:否}
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
     public static boolean isPortrait(Context context) {
         return context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
     }
 
     /**
-     * 获取屏幕旋转角度
-     *
-     * @param activity activity
-     * @return 屏幕旋转角度
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：获取屏幕旋转角度
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：activity
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：屏幕旋转角度
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
     public static int getScreenRotation(Activity activity) {
         switch (activity.getWindowManager().getDefaultDisplay().getRotation()) {
@@ -111,10 +142,13 @@ public class ScreenUtils {
     }
 
     /**
-     * 获取当前屏幕截图，包含状态栏
-     *
-     * @param activity activity
-     * @return Bitmap
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：获取当前屏幕截图，包含状态栏
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：activity
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：Bitmap
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
     public static Bitmap captureWithStatusBar(Activity activity) {
         View view = activity.getWindow().getDecorView();
@@ -129,10 +163,13 @@ public class ScreenUtils {
     }
 
     /**
-     * 判断是否锁屏
-     *
-     * @param context 上下文
-     * @return {@code true}: 是<br>{@code false}: 否
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：判断是否锁屏
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：boolean {true:是} {false:否}
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
     public static boolean isScreenLock(Context context) {
         KeyguardManager km = (KeyguardManager) context.getApplicationContext().getSystemService(Context.KEYGUARD_SERVICE);

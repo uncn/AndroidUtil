@@ -30,6 +30,11 @@ public class ScreenUtils {
      * ║ 返回：屏幕宽度
      * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
+    /**
+     * 获取屏幕的宽度
+     * @param context
+     * @return
+     */
     public static int getScreenWidth(Context context) {
         context = context.getApplicationContext();
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);

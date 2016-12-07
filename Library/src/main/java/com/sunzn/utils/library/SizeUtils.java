@@ -1,6 +1,7 @@
 package com.sunzn.utils.library;
 
 import android.content.Context;
+import android.text.format.Formatter;
 
 public class SizeUtils {
 
@@ -63,5 +64,19 @@ public class SizeUtils {
         float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (pxValue / fontScale + 0.5f);
     }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：将文件大小 long 值格式化为 B → KB → MB → GB
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context、number
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：转换后的字符串大小
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static String formatFileSize(Context context, long number) {
+        return Formatter.formatFileSize(context, number);
+    }
+
 
 }

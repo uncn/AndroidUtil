@@ -78,5 +78,4 @@ public class SizeUtils {
         return Formatter.formatFileSize(context, number);
     }
 
-
 }

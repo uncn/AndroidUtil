@@ -1,7 +1,9 @@
 package com.sunzn.utils.library;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 /**
@@ -46,6 +48,33 @@ public class TimeUtils {
      */
 
     private static final String DEFAULT_PATTERN = "yyyy-MM-dd HH:mm:ss";
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：获取当前毫秒时间戳
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：毫秒时间戳
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static long getCurrentTimeMills() {
+        return System.currentTimeMillis();
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：获取今天起始时间戳
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：毫秒时间戳
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static long getTodayOfStart() {
+        Calendar calendar = new GregorianCalendar();
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        return calendar.getTime().getTime();
+    }
 
     /**
      * ╔════════════════════════════════════════════════════════════════════════════════════════════

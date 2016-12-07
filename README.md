@@ -7,6 +7,7 @@ An Android library that help you to build app.
 dependencies {
     compile 'com.github.ShortStickBoy:AndroidUtil:V1.0.1'
 }
+```
 
 ## License
 

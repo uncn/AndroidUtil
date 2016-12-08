@@ -164,6 +164,28 @@ public class ScreenUtils {
 
     /**
      * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：获取当前屏幕截图，不包含状态栏
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：activity
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：Bitmap
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static Bitmap captureWithoutStatusBar(Activity activity) {
+        View view = activity.getWindow().getDecorView();
+        view.setDrawingCacheEnabled(true);
+        view.buildDrawingCache();
+        Bitmap bmp = view.getDrawingCache();
+        int statusBarHeight = BarUtils.getStatusBarHeight(activity);
+        DisplayMetrics dm = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
+        Bitmap ret = Bitmap.createBitmap(bmp, 0, statusBarHeight, dm.widthPixels, dm.heightPixels - statusBarHeight);
+        view.destroyDrawingCache();
+        return ret;
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
      * ║ 名称：判断是否锁屏
      * ╟────────────────────────────────────────────────────────────────────────────────────────────
      * ║ 参数：context

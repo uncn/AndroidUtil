@@ -4,7 +4,7 @@ package com.sunzn.utils.library;
  * Created by sunzn on 2016/12/9.
  */
 
-class EntityUtils {
+public class EntityUtils {
 
     private EntityUtils() {
         super();

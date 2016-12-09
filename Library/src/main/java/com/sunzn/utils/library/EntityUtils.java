@@ -10,7 +10,7 @@ public class EntityUtils {
         super();
     }
 
-    static class Screen {
+    public static class Screen {
 
         private int width, height, density;
 

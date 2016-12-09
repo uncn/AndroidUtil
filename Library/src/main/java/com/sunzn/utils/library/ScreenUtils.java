@@ -11,6 +11,8 @@ import android.view.Surface;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.sunzn.utils.library.EntityUtils.Screen;
+
 /**
  * Created by sunzn on 2016/12/6.
  */
@@ -32,9 +34,9 @@ public class ScreenUtils {
      */
     public static int getScreenWidth(Context context) {
         context = context.getApplicationContext();
-        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        DisplayMetrics dm = new DisplayMetrics();           // 创建了一张白纸
-        windowManager.getDefaultDisplay().getMetrics(dm);   // 给白纸设置宽高
+        WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics dm = new DisplayMetrics();     // 创建了一张白纸
+        manager.getDefaultDisplay().getMetrics(dm);   // 给白纸设置宽高
         return dm.widthPixels;
     }
 
@@ -49,10 +51,27 @@ public class ScreenUtils {
      */
     public static int getScreenHeight(Context context) {
         context = context.getApplicationContext();
-        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        DisplayMetrics dm = new DisplayMetrics();           // 创建了一张白纸
-        windowManager.getDefaultDisplay().getMetrics(dm);   // 给白纸设置宽高
+        WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics dm = new DisplayMetrics();     // 创建了一张白纸
+        manager.getDefaultDisplay().getMetrics(dm);   // 给白纸设置宽高
         return dm.heightPixels;
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：获取屏幕宽 (单位：px)、高 (单位：px)、密度
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：屏幕实体类
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static Screen getScreenInfo(Context context) {
+        context = context.getApplicationContext();
+        WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics dm = new DisplayMetrics();
+        manager.getDefaultDisplay().getMetrics(dm);
+        return new Screen(dm.widthPixels, dm.heightPixels, dm.densityDpi);
     }
 
     /**

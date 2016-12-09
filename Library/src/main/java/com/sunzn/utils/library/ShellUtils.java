@@ -157,7 +157,7 @@ public class ShellUtils {
      * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
     public static class CommandResult {
-        
+
         public int result;
         public String successMsg;
         public String errorMsg;

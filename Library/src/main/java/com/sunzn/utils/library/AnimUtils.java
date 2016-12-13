@@ -6,9 +6,9 @@ import android.widget.ViewAnimator;
  * Created by sunzn on 2016/12/13.
  */
 
-public class AnimatorUtils {
+public class AnimUtils {
 
-    private AnimatorUtils() {
+    private AnimUtils() {
         super();
     }
 

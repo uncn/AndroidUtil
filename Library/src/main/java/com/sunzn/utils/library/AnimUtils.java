@@ -12,11 +12,6 @@ public class AnimUtils {
         super();
     }
 
-    public static final int 加载 = 0;
-    public static final int 成功 = 1;
-    public static final int 失败 = 2;
-    public static final int 空白 = 3;
-
     /**
      * ╔════════════════════════════════════════════════════════════════════════════════════════════
      * ║ 名称：切换页面

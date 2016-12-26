@@ -58,7 +58,7 @@ public class ColorUtils {
      */
     @TargetApi(Build.VERSION_CODES.N)
     public static Spanned markColor(String input, String regex, String color) {
-        if (input != null) {
+        if (input != null && regex != null && color != null) {
             String s = RegexUtils.getReplaceAll(input, regex, "<font color = " + color + ">" + regex + "</font>");
             return Build.VERSION.SDK_INT >= 24 ? Html.fromHtml(s, Html.FROM_HTML_MODE_LEGACY) : Html.fromHtml(s);
         } else {

@@ -20,7 +20,7 @@ import static com.sunzn.utils.library.ConstUtils.REGEX_ZH;
 public class RegexUtils {
 
     private RegexUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

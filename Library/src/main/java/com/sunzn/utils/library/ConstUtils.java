@@ -3,7 +3,7 @@ package com.sunzn.utils.library;
 public class ConstUtils {
 
     private ConstUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /******************** 正则相关常量 ********************/

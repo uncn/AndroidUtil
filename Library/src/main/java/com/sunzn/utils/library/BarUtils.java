@@ -5,7 +5,7 @@ import android.content.Context;
 public class BarUtils {
 
     private BarUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

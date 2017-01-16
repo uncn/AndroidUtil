@@ -11,7 +11,7 @@ import android.net.NetworkInfo;
 public class NetWorkUtils {
 
     private NetWorkUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

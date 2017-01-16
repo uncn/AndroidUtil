@@ -12,7 +12,7 @@ import java.util.Set;
 public class CloneUtils {
 
     private CloneUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**
@@ -20,7 +20,7 @@ public class CloneUtils {
      * ║ 名称：无需进行复制的特殊类型数组
      * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
-    static Class[] exception = new Class[]{String.class, Boolean.class, Character.class, Byte.class, Short.class, Integer.class, Long.class, Float.class, Double.class, Void.class, Object.class, Class.class};
+    private static Class[] exception = new Class[]{String.class, Boolean.class, Character.class, Byte.class, Short.class, Integer.class, Long.class, Float.class, Double.class, Void.class, Object.class, Class.class};
 
     /**
      * ╔════════════════════════════════════════════════════════════════════════════════════════════

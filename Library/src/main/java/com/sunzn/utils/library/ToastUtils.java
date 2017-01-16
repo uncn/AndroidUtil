@@ -10,7 +10,7 @@ import android.widget.Toast;
 public class ToastUtils {
 
     private ToastUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

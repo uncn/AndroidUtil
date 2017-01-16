@@ -8,7 +8,7 @@ import java.util.Map;
 public class SPUtils {
 
     private SPUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

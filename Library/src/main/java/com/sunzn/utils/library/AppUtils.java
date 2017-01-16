@@ -9,7 +9,7 @@ import android.graphics.drawable.Drawable;
 public class AppUtils {
 
     private AppUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

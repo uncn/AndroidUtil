@@ -20,7 +20,7 @@ import com.sunzn.utils.library.EntityUtils.Screen;
 public class ScreenUtils {
 
     private ScreenUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

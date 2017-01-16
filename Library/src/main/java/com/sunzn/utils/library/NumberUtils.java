@@ -9,7 +9,7 @@ import java.util.Random;
 public class NumberUtils {
 
     private NumberUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

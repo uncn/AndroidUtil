@@ -6,7 +6,7 @@ import android.text.format.Formatter;
 public class SizeUtils {
 
     private SizeUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

@@ -9,7 +9,7 @@ import android.widget.ViewAnimator;
 public class AnimUtils {
 
     private AnimUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

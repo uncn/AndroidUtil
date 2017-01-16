@@ -9,7 +9,7 @@ import android.os.Environment;
 public class SDCardUtils {
 
     private SDCardUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

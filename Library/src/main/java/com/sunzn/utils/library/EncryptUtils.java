@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 public class EncryptUtils {
 
     private EncryptUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     private enum MD5Type {

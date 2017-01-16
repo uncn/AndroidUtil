@@ -12,7 +12,7 @@ import java.util.List;
 public class PhoneUtils {
 
     private PhoneUtils() {
-        throw new UnsupportedOperationException("u can't instantiate me...");
+        throw new RuntimeException("Stub!");
     }
 
     /**

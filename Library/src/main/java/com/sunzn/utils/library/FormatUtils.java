@@ -9,7 +9,7 @@ import java.text.DecimalFormat;
 public class FormatUtils {
 
     private FormatUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

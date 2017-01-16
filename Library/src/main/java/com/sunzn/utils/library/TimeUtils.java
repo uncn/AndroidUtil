@@ -13,7 +13,7 @@ import java.util.Locale;
 public class TimeUtils {
 
     private TimeUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

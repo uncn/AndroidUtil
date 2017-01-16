@@ -7,7 +7,7 @@ package com.sunzn.utils.library;
 public class StringUtils {
 
     private StringUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

@@ -9,7 +9,7 @@ import java.net.URLEncoder;
 public class EncodeUtils {
 
     private EncodeUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

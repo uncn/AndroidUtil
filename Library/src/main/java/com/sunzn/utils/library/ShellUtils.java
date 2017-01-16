@@ -8,7 +8,7 @@ import java.util.List;
 public class ShellUtils {
 
     private ShellUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

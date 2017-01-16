@@ -6,7 +6,7 @@ import java.io.IOException;
 public class CloseUtils {
 
     private CloseUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

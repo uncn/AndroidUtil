@@ -13,7 +13,7 @@ import android.support.v4.content.LocalBroadcastManager;
 public class BroadcastUtils {
 
     private BroadcastUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

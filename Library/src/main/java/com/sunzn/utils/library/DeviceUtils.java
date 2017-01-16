@@ -9,7 +9,7 @@ import android.os.Build;
 public class DeviceUtils {
 
     private DeviceUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

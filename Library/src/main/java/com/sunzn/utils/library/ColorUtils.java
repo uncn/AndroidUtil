@@ -15,7 +15,7 @@ import android.text.Spanned;
 public class ColorUtils {
 
     private ColorUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     /**

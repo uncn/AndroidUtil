@@ -7,7 +7,7 @@ package com.sunzn.utils.library;
 public class EntityUtils {
 
     private EntityUtils() {
-        super();
+        throw new RuntimeException("Stub!");
     }
 
     public static class Screen {

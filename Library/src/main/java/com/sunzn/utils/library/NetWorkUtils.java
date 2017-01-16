@@ -43,6 +43,7 @@ public class NetWorkUtils {
      * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
     public static boolean isConnected(Context context) {
+        if (context == null) return false;
         NetworkInfo info = getActiveNetworkInfo(context);
         return info != null && info.isConnected();
     }

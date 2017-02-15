@@ -12,6 +12,7 @@ import static com.sunzn.utils.library.ConstUtils.REGEX_ID_CARD18;
 import static com.sunzn.utils.library.ConstUtils.REGEX_IP;
 import static com.sunzn.utils.library.ConstUtils.REGEX_MOBILE_EXACT;
 import static com.sunzn.utils.library.ConstUtils.REGEX_MOBILE_SIMPLE;
+import static com.sunzn.utils.library.ConstUtils.REGEX_POST_CODE;
 import static com.sunzn.utils.library.ConstUtils.REGEX_TEL;
 import static com.sunzn.utils.library.ConstUtils.REGEX_URL;
 import static com.sunzn.utils.library.ConstUtils.REGEX_USERNAME;
@@ -21,6 +22,19 @@ public class RegexUtils {
 
     private RegexUtils() {
         throw new RuntimeException("Stub!");
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：验证邮政编码（简单）
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：input 待验证文本
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：{true : 匹配} {false : 不匹配}
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static boolean isPostCode(CharSequence input) {
+        return isMatch(REGEX_POST_CODE, input);
     }
 
     /**
@@ -247,5 +261,5 @@ public class RegexUtils {
         if (input == null) return null;
         return Pattern.compile(regex).matcher(input).replaceAll(replacement);
     }
-    
+
 }

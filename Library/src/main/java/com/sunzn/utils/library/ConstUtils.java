@@ -56,5 +56,9 @@ public class ConstUtils {
      * 正则：IP地址
      */
     static final String REGEX_IP            = "((2[0-4]\\d|25[0-5]|[01]?\\d\\d?)\\.){3}(2[0-4]\\d|25[0-5]|[01]?\\d\\d?)";
+    /**
+     * 正则：邮政编码
+     */
+    static final String REGEX_POST_CODE     = "^\\d{6}$";
 
 }

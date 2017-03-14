@@ -6,6 +6,8 @@ package com.sunzn.utils.library;
 
 public class StringUtils {
 
+    public static final String NULL = "";
+
     private StringUtils() {
         throw new RuntimeException("Stub!");
     }

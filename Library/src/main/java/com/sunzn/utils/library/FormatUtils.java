@@ -22,7 +22,7 @@ public class FormatUtils {
      * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
     public static String format(float num) {
-        DecimalFormat format = new DecimalFormat("#.00");
+        DecimalFormat format = new DecimalFormat("0.00");
         return format.format(num);
     }
 

@@ -115,7 +115,7 @@ public class DrawableUtils {
      * ║ 返回：void
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    static void setBackground(@NonNull View view, @NonNull Drawable drawable) {
+    public static void setBackground(@NonNull View view, @NonNull Drawable drawable) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             view.setBackground(drawable);
         } else {

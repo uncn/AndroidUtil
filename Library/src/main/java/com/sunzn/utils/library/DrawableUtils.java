@@ -109,6 +109,82 @@ public class DrawableUtils {
 
     /**
      * ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：设置 TextView 的 DrawableLeft
+     * ╟──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context  上下文
+     * ║ 参数：view     TextView
+     * ║ 参数：id       图片资源
+     * ║ 参数：color    颜色资源
+     * ╟──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：void
+     * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static void setColorDrawableLeft(@NonNull Context context, @NonNull TextView view, @DrawableRes int id, @ColorRes int color) {
+        Drawable drawable = getDrawable(context, id).mutate();
+        drawable.setColorFilter(ContextCompat.getColor(context, color), PorterDuff.Mode.SRC_ATOP);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        view.setCompoundDrawables(drawable, null, null, null);
+    }
+
+    /**
+     * ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：设置 TextView 的 DrawableRight
+     * ╟──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context  上下文
+     * ║ 参数：view     TextView
+     * ║ 参数：id       图片资源
+     * ║ 参数：color    颜色资源
+     * ╟──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：void
+     * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static void setColorDrawableRight(@NonNull Context context, @NonNull TextView view, @DrawableRes int id, @ColorRes int color) {
+        Drawable drawable = getDrawable(context, id).mutate();
+        drawable.setColorFilter(ContextCompat.getColor(context, color), PorterDuff.Mode.SRC_ATOP);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        view.setCompoundDrawables(null, null, drawable, null);
+    }
+
+    /**
+     * ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：设置 TextView 的 DrawableTop
+     * ╟──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context  上下文
+     * ║ 参数：view     TextView
+     * ║ 参数：id       图片资源
+     * ║ 参数：color    颜色资源
+     * ╟──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：void
+     * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static void setColorDrawableTop(@NonNull Context context, @NonNull TextView view, @DrawableRes int id, @ColorRes int color) {
+        Drawable drawable = getDrawable(context, id).mutate();
+        drawable.setColorFilter(ContextCompat.getColor(context, color), PorterDuff.Mode.SRC_ATOP);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        view.setCompoundDrawables(null, drawable, null, null);
+    }
+
+    /**
+     * ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：设置 TextView 的 DrawableBottom
+     * ╟──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context  上下文
+     * ║ 参数：view     TextView
+     * ║ 参数：id       图片资源
+     * ║ 参数：color    颜色资源
+     * ╟──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：void
+     * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static void setColorDrawableBottom(@NonNull Context context, @NonNull TextView view, @DrawableRes int id, @ColorRes int color) {
+        Drawable drawable = getDrawable(context, id).mutate();
+        drawable.setColorFilter(ContextCompat.getColor(context, color), PorterDuff.Mode.SRC_ATOP);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        view.setCompoundDrawables(null, null, null, drawable);
+    }
+
+    /**
+     * ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      * ║ 名称：为 View 设置背景 Drawable
      * ╟──────────────────────────────────────────────────────────────────────────────────────────────────────────────
      * ║ 参数：view      控件

@@ -7,10 +7,12 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
 import android.os.Build;
 import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -121,6 +123,22 @@ public class DrawableUtils {
         } else {
             view.setBackgroundDrawable(drawable);
         }
+    }
+
+    /**
+     * ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：为 ImageView 设置对应的色彩
+     * ╟──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context   上下文
+     * ║ 参数：view      ImageView
+     * ║ 参数：color     颜色资源
+     * ╟──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：void
+     * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static void setColorDrawable(@NonNull Context context, @NonNull ImageView view, @ColorRes int color) {
+        Drawable drawable = view.getDrawable().mutate();
+        drawable.setColorFilter(ContextCompat.getColor(context, color), PorterDuff.Mode.SRC_ATOP);
     }
 
     /**

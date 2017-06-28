@@ -1,11 +1,14 @@
 # AndroidUtil
+
+[![](https://jitpack.io/v/ShortStickBoy/AndroidUtil.svg)](https://jitpack.io/#ShortStickBoy/AndroidUtil)
+
 An Android library that help you to build app.
 
 ### Gradle依赖
 
 ```groovy
 dependencies {
-    compile 'com.github.ShortStickBoy:AndroidUtil:V1.2.8'
+    compile 'com.github.ShortStickBoy:AndroidUtil:V1.3.6'
 }
 ```
 

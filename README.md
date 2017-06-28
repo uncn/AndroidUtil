@@ -2,6 +2,7 @@
 
 [![](https://jitpack.io/v/ShortStickBoy/AndroidUtil.svg)](https://jitpack.io/#ShortStickBoy/AndroidUtil)
 [![](https://img.shields.io/badge/License-Apache%202.0-orange.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
+[![](https://img.shields.io/badge/Blog-sunzn-blue.svg)](http://www.sunzn.com/)
 
 An Android library that help you to build app.
 

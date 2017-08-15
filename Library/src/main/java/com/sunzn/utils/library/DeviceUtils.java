@@ -3,6 +3,7 @@ package com.sunzn.utils.library;
 import android.content.Context;
 import android.os.Build;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.telephony.TelephonyManager;
 
 /**
@@ -44,7 +45,7 @@ public class DeviceUtils {
      * ║ 返回：String
      * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static String getDeviceId(Context context) {
+    public static String getDeviceId(@NonNull Context context) {
         TelephonyManager manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         if (manager.getDeviceId() == null) {
             return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);

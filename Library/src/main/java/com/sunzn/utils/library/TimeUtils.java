@@ -1,5 +1,6 @@
 package com.sunzn.utils.library;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -89,7 +90,7 @@ public class TimeUtils {
      * ║ 返回：时间字符串
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static String time2String(long millis) {
+    public static String millis2String(long millis) {
         return new SimpleDateFormat(DEFAULT_PATTERN, Locale.getDefault()).format(new Date(millis));
     }
 
@@ -103,8 +104,22 @@ public class TimeUtils {
      * ║ 返回：时间字符串
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static String time2String(long millis, String pattern) {
+    public static String millis2String(long millis, String pattern) {
         return new SimpleDateFormat(pattern, Locale.getDefault()).format(new Date(millis));
+    }
+
+    /**
+     * ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：将时间字符串转为时间戳
+     * ╟──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：time    时间字符串
+     * ║ 参数：pattern 时间格式
+     * ╟──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：时间戳
+     * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static long string2Millis(String time, String pattern) throws ParseException {
+        return new SimpleDateFormat(pattern, Locale.getDefault()).parse(time).getTime();
     }
 
     /**

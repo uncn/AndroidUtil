@@ -10,6 +10,7 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
@@ -37,6 +38,66 @@ public class DrawableUtils {
      */
     public static Drawable getDrawable(@NonNull Context context, @DrawableRes int id) {
         return ContextCompat.getDrawable(context, id);
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：设置 TextView 的 DrawableLeft
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：view     TextView
+     * ║ 参数：left     Drawable
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：void
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static void setDrawableLeft(@NonNull TextView view, @Nullable Drawable left) {
+        if (left != null) left.setBounds(0, 0, left.getMinimumWidth(), left.getMinimumHeight());
+        view.setCompoundDrawables(left, null, null, null);
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：设置 TextView 的 DrawableRight
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：view     TextView
+     * ║ 参数：right    Drawable
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：void
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static void setDrawableRight(@NonNull TextView view, @Nullable Drawable right) {
+        if (right != null) right.setBounds(0, 0, right.getMinimumWidth(), right.getMinimumHeight());
+        view.setCompoundDrawables(null, null, right, null);
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：设置 TextView 的 DrawableTop
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：view     TextView
+     * ║ 参数：top      Drawable
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：void
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static void setDrawableTop(@NonNull TextView view, @Nullable Drawable top) {
+        if (top != null) top.setBounds(0, 0, top.getMinimumWidth(), top.getMinimumHeight());
+        view.setCompoundDrawables(null, top, null, null);
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：设置 TextView 的 DrawableBottom
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：view     TextView
+     * ║ 参数：btm      Drawable
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：void
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static void setDrawableBottom(@NonNull TextView view, @Nullable Drawable btm) {
+        if (btm != null) btm.setBounds(0, 0, btm.getMinimumWidth(), btm.getMinimumHeight());
+        view.setCompoundDrawables(null, null, null, btm);
     }
 
     /**

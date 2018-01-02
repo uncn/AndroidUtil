@@ -28,7 +28,7 @@ public class NetWorkUtils {
     private static NetworkInfo getActiveNetworkInfo(Context context) {
         context = context.getApplicationContext();
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        return cm.getActiveNetworkInfo();
+        return cm != null ? cm.getActiveNetworkInfo() : null;
     }
 
     /**
@@ -46,6 +46,22 @@ public class NetWorkUtils {
         if (context == null) return false;
         NetworkInfo info = getActiveNetworkInfo(context);
         return info != null && info.isConnected();
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：判断Wifi是否连接
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 权限：<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：{true ：连接} {false ：未连接}
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static boolean isWifiConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm != null && cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().getType() == ConnectivityManager.TYPE_WIFI;
     }
 
 }

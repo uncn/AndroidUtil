@@ -170,6 +170,26 @@ public class DrawableUtils {
 
     /**
      * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：设置 TextView 的 DrawableLeft 和 DrawableRight
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context  上下文
+     * ║ 参数：view     TextView
+     * ║ 参数：leftID   资源
+     * ║ 参数：rightID  资源
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：void
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static void setDrawableLeftAndRight(@NonNull Context context, @NonNull TextView view, @DrawableRes int leftID, @DrawableRes int rightID) {
+        Drawable leftDrawable = getDrawable(context, leftID);
+        leftDrawable.setBounds(0, 0, leftDrawable.getMinimumWidth(), leftDrawable.getMinimumHeight());
+        Drawable rightDrawable = getDrawable(context, rightID);
+        rightDrawable.setBounds(0, 0, rightDrawable.getMinimumWidth(), rightDrawable.getMinimumHeight());
+        view.setCompoundDrawables(leftDrawable, null, rightDrawable, null);
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
      * ║ 名称：设置 TextView 的 DrawableLeft
      * ╟────────────────────────────────────────────────────────────────────────────────────────────
      * ║ 参数：context  上下文

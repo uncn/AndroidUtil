@@ -49,15 +49,16 @@ public class ColorUtils {
      * ╔════════════════════════════════════════════════════════════════════════════════════════════
      * ║ 名称：用指定颜色标记给定的字符串
      * ╟────────────────────────────────────────────────────────────────────────────────────────────
-     * ║ 参数：input  要标记的字符串
-     * ║ 参数：color  标记的颜色值
+     * ║ 参数：format  格式化规则
+     * ║ 参数：regex   被标记的字符串
+     * ║ 参数：color   标记的颜色值
      * ╟────────────────────────────────────────────────────────────────────────────────────────────
      * ║ 返回：颜色标记后的内容
      * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static Spanned markColor(String input, String color) {
-        if (!StringUtils.isEmpty(input) && color != null) {
-            String s = "<font color = " + color + ">" + input + "</font>";
+    public static Spanned signColor(String format, String regex, String color) {
+        if (!StringUtils.isEmpty(format, regex, color)) {
+            String s = String.format(format, "<font color = " + color + ">" + regex + "</font>");
             return Build.VERSION.SDK_INT >= 24 ? Html.fromHtml(s, Html.FROM_HTML_MODE_LEGACY) : Html.fromHtml(s);
         } else {
             return null;

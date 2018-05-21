@@ -170,6 +170,82 @@ public class DrawableUtils {
 
     /**
      * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：设置 TextView 的 DrawableLeft
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context  上下文
+     * ║ 参数：view     TextView
+     * ║ 参数：id       资源
+     * ║ 参数：text     文本
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：void
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static void setDrawableLeft(@NonNull Context context, @NonNull TextView view, @DrawableRes int id, @NonNull String text) {
+        Drawable drawable = getDrawable(context, id);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        view.setCompoundDrawables(drawable, null, null, null);
+        view.setText(text);
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：设置 TextView 的 DrawableRight
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context  上下文
+     * ║ 参数：view     TextView
+     * ║ 参数：id       资源
+     * ║ 参数：text     文本
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：void
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static void setDrawableRight(@NonNull Context context, @NonNull TextView view, @DrawableRes int id, @NonNull String text) {
+        Drawable drawable = getDrawable(context, id);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        view.setCompoundDrawables(null, null, drawable, null);
+        view.setText(text);
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：设置 TextView 的 DrawableTop
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context  上下文
+     * ║ 参数：view     TextView
+     * ║ 参数：id       资源
+     * ║ 参数：text     文本
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：void
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static void setDrawableTop(@NonNull Context context, @NonNull TextView view, @DrawableRes int id, @NonNull String text) {
+        Drawable drawable = getDrawable(context, id);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        view.setCompoundDrawables(null, drawable, null, null);
+        view.setText(text);
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：设置 TextView 的 DrawableBottom
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context  上下文
+     * ║ 参数：view     TextView
+     * ║ 参数：id       资源
+     * ║ 参数：text     文本
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：void
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static void setDrawableBottom(@NonNull Context context, @NonNull TextView view, @DrawableRes int id, @NonNull String text) {
+        Drawable drawable = getDrawable(context, id);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        view.setCompoundDrawables(null, null, null, drawable);
+        view.setText(text);
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
      * ║ 名称：设置 TextView 的 DrawableLeft 和 DrawableRight
      * ╟────────────────────────────────────────────────────────────────────────────────────────────
      * ║ 参数：context  上下文

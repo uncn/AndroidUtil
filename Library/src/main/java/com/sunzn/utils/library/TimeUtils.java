@@ -285,7 +285,7 @@ public class TimeUtils {
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
     public static String getNodeTime(long time, int day, String pattern) {
-        long range = (time - getCurrentTimeMills()) / 1000;
+        long range = (getCurrentTimeMills() - time) / 1000;
         if (range < 0) {
             return "未知";
         } else if (range <= MINUTE) {

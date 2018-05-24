@@ -48,6 +48,14 @@ public class TimeUtils {
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
 
+    public static final int SECOND = 1;
+
+    public static final int MINUTE = SECOND * 60;
+
+    public static final int HOUR = MINUTE * 60;
+
+    public static final int DAY = HOUR * 24;
+
     private static final String DEFAULT_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
     private static final String[] CHINESE_ZODIAC = {"猴", "鸡", "狗", "猪", "鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊"};
@@ -243,6 +251,54 @@ public class TimeUtils {
      */
     public static String getMediaTime(int secs) {
         return FormatUtils.format("%02d", secs / 60) + ":" + FormatUtils.format("%02d", secs % 60);
+    }
+
+    /**
+     * ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：将时间字符串由一种格式转换为节点格式时间
+     * ╟──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：time    时间字符串
+     * ║ 参数：source  当前时间格式
+     * ║ 参数：target  目标时间格式
+     * ║ 参数：day     限制的天数
+     * ╟──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：时间字符串
+     * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static String getNodeTime(String time, String source, String target, int day) {
+        try {
+            return getNodeTime(string2Millis(time, source), day, target);
+        } catch (ParseException e) {
+            return time;
+        }
+    }
+
+    /**
+     * ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：获取节点格式的时间
+     * ╟──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：time    时间
+     * ║ 参数：day     限制的天数
+     * ║ 参数：pattern 时间格式
+     * ╟──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：时间字符串
+     * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static String getNodeTime(long time, int day, String pattern) {
+        long range = (time - getCurrentTimeMills()) / 1000;
+        if (range < 0) {
+            return "未知";
+        } else if (range <= MINUTE) {
+            return "刚刚";
+        } else if (range <= HOUR) {
+            return range / MINUTE + "分钟前";
+        } else if (range <= DAY) {
+            return range / HOUR + "小时前";
+        } else if (range <= DAY * day) {
+            return range / DAY + "天前";
+        } else {
+            return millis2String(time, pattern);
+        }
     }
 
 }

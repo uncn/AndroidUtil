@@ -43,7 +43,7 @@ public class DeviceUtils {
 
     /**
      * ╔════════════════════════════════════════════════════════════════════════════════════════════
-     * ║ 名称：获取设备IMEI
+     * ║ 名称：获取设备 IMEI 或 SN
      * ╟────────────────────────────────────────────────────────────────────────────────────────────
      * ║ 返回：String
      * ╚════════════════════════════════════════════════════════════════════════════════════════════
@@ -53,7 +53,10 @@ public class DeviceUtils {
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
             TelephonyManager manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
             if (manager != null) {
-                ID = manager.getDeviceId();
+                ID = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? manager.getImei() : manager.getDeviceId();
+                if (ID == null || ID.length() == 0) {
+                    ID = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? Build.getSerial() : Build.SERIAL;
+                }
                 if (ID == null || ID.length() == 0) {
                     ID = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
                 }

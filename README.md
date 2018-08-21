@@ -10,7 +10,7 @@ An Android library that help you to build app.
 
 ```groovy
 dependencies {
-    compile 'com.github.ShortStickBoy:AndroidUtil:V1.5.3'
+    compile 'com.github.ShortStickBoy:AndroidUtil:V1.6.7'
 }
 ```
 

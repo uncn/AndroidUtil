@@ -262,4 +262,23 @@ public class RegexUtils {
         return Pattern.compile(regex).matcher(input).replaceAll(replacement);
     }
 
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：替换所有正则匹配的部分
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：input       要替换的字符串
+     * ║ 参数：regex       正则表达式数组
+     * ║ 参数：replacement 代替者
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：替换所有正则匹配的部分
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static String getReplaceAll(String input, String[] regex, String replacement) {
+        if (input == null || regex == null) return input;
+        for (String aRegex : regex) {
+            input = input.replaceAll(aRegex, replacement);
+        }
+        return input;
+    }
+
 }

@@ -6,7 +6,6 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -53,7 +52,7 @@ public class ToastUtils {
      * ║ 返回：void
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void normal(@NonNull Context context, @NonNull CharSequence message) {
+    public static void normal(Context context, CharSequence message) {
         normal(context, message, INVALID_ID);
     }
 
@@ -67,7 +66,7 @@ public class ToastUtils {
      * ║ 返回：void
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void notice(@NonNull Context context, @NonNull CharSequence message) {
+    public static void notice(Context context, CharSequence message) {
         notice(context, message, INVALID_ID);
     }
 
@@ -81,7 +80,7 @@ public class ToastUtils {
      * ║ 返回：void
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void failure(@NonNull Context context, @NonNull CharSequence message) {
+    public static void failure(Context context, CharSequence message) {
         failure(context, message, INVALID_ID);
     }
 
@@ -95,7 +94,7 @@ public class ToastUtils {
      * ║ 返回：void
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void success(@NonNull Context context, @NonNull CharSequence message) {
+    public static void success(Context context, CharSequence message) {
         success(context, message, INVALID_ID);
     }
 
@@ -109,7 +108,7 @@ public class ToastUtils {
      * ║ 返回：void
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void warning(@NonNull Context context, @NonNull CharSequence message) {
+    public static void warning(Context context, CharSequence message) {
         warning(context, message, INVALID_ID);
     }
 
@@ -124,7 +123,7 @@ public class ToastUtils {
      * ║ 返回：void
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void normal(@NonNull Context context, @NonNull CharSequence message, @DrawableRes int iconRes) {
+    public static void normal(Context context, CharSequence message, @DrawableRes int iconRes) {
         normal(context, message, iconRes, Toast.LENGTH_SHORT);
     }
 
@@ -139,7 +138,7 @@ public class ToastUtils {
      * ║ 返回：void
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void notice(@NonNull Context context, @NonNull CharSequence message, @DrawableRes int iconRes) {
+    public static void notice(Context context, CharSequence message, @DrawableRes int iconRes) {
         notice(context, message, iconRes, Toast.LENGTH_SHORT);
     }
 
@@ -154,7 +153,7 @@ public class ToastUtils {
      * ║ 返回：void
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void failure(@NonNull Context context, @NonNull CharSequence message, @DrawableRes int iconRes) {
+    public static void failure(Context context, CharSequence message, @DrawableRes int iconRes) {
         failure(context, message, iconRes, Toast.LENGTH_SHORT);
     }
 
@@ -169,7 +168,7 @@ public class ToastUtils {
      * ║ 返回：void
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void success(@NonNull Context context, @NonNull CharSequence message, @DrawableRes int iconRes) {
+    public static void success(Context context, CharSequence message, @DrawableRes int iconRes) {
         success(context, message, iconRes, Toast.LENGTH_SHORT);
     }
 
@@ -184,7 +183,7 @@ public class ToastUtils {
      * ║ 返回：void
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void warning(@NonNull Context context, @NonNull CharSequence message, @DrawableRes int iconRes) {
+    public static void warning(Context context, CharSequence message, @DrawableRes int iconRes) {
         warning(context, message, iconRes, Toast.LENGTH_SHORT);
     }
 
@@ -200,7 +199,7 @@ public class ToastUtils {
      * ║ 返回：void
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void normal(@NonNull Context context, @NonNull CharSequence message, @DrawableRes int iconRes, int duration) {
+    public static void normal(Context context, CharSequence message, @DrawableRes int iconRes, int duration) {
         custom(context, message, iconRes, TEXT_COLOR, INVALID_ID, duration);
     }
 
@@ -216,7 +215,7 @@ public class ToastUtils {
      * ║ 返回：void
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void notice(@NonNull Context context, @NonNull CharSequence message, @DrawableRes int iconRes, int duration) {
+    public static void notice(Context context, CharSequence message, @DrawableRes int iconRes, int duration) {
         custom(context, message, iconRes, TEXT_COLOR, INFO_COLOR, duration);
     }
 
@@ -232,7 +231,7 @@ public class ToastUtils {
      * ║ 返回：void
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void failure(@NonNull Context context, @NonNull CharSequence message, @DrawableRes int iconRes, int duration) {
+    public static void failure(Context context, CharSequence message, @DrawableRes int iconRes, int duration) {
         custom(context, message, iconRes, TEXT_COLOR, ERROR_COLOR, duration);
     }
 
@@ -248,7 +247,7 @@ public class ToastUtils {
      * ║ 返回：void
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void success(@NonNull Context context, @NonNull CharSequence message, @DrawableRes int iconRes, int duration) {
+    public static void success(Context context, CharSequence message, @DrawableRes int iconRes, int duration) {
         custom(context, message, iconRes, TEXT_COLOR, SUCCESS_COLOR, duration);
     }
 
@@ -264,7 +263,7 @@ public class ToastUtils {
      * ║ 返回：void
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void warning(@NonNull Context context, @NonNull CharSequence message, @DrawableRes int iconRes, int duration) {
+    public static void warning(Context context, CharSequence message, @DrawableRes int iconRes, int duration) {
         custom(context, message, iconRes, TEXT_COLOR, WARNING_COLOR, duration);
     }
 
@@ -282,7 +281,7 @@ public class ToastUtils {
      * ║ 返回：void
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void custom(@NonNull Context context, @NonNull CharSequence message, @DrawableRes int iconRes, @ColorInt int textColor, @ColorInt int tintColor, int duration) {
+    public static void custom(Context context, CharSequence message, @DrawableRes int iconRes, @ColorInt int textColor, @ColorInt int tintColor, int duration) {
         custom(context, message, iconRes == INVALID_ID ? null : DrawableUtils.getDrawable(context, iconRes), textColor, tintColor, duration);
     }
 
@@ -300,11 +299,14 @@ public class ToastUtils {
      * ║ 返回：void
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void custom(@NonNull Context context, @NonNull CharSequence message, Drawable icon, @ColorInt int textColor, @ColorInt int tintColor, int duration) {
+    public static void custom(Context context, CharSequence message, Drawable icon, @ColorInt int textColor, @ColorInt int tintColor, int duration) {
+
+        if (context == null || message == null) return;
+
         final Toast toast = new Toast(context);
         final View rootView = LayoutInflater.from(context).inflate(R.layout.toast_layout, null);
-        final ImageView iconView = (ImageView) rootView.findViewById(R.id.toast_icon);
-        final TextView textView = (TextView) rootView.findViewById(R.id.toast_text);
+        final ImageView iconView = rootView.findViewById(R.id.toast_icon);
+        final TextView textView = rootView.findViewById(R.id.toast_text);
         Drawable drawableFrame;
 
         if (INVALID_ID == tintColor) {

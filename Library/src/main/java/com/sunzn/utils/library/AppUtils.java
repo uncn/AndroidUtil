@@ -1,10 +1,17 @@
 package com.sunzn.utils.library;
 
+import android.app.ActivityManager;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+
+import java.util.List;
+
+import static android.content.Context.ACTIVITY_SERVICE;
 
 public class AppUtils {
 
@@ -231,6 +238,60 @@ public class AppUtils {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
             return -1;
+        }
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：判断 APP 是否运行
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context     上下文
+     * ║ 参数：packageName 包名
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：APP 版本码
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static boolean isAppAlive(Context context, String packageName) {
+        if (context != null && packageName != null && packageName.length() > 0) {
+            ActivityManager activityManager = (ActivityManager) context.getSystemService(ACTIVITY_SERVICE);
+            List<ActivityManager.RunningAppProcessInfo> processInfos = activityManager.getRunningAppProcesses();
+            for (int i = 0; i < processInfos.size(); i++) {
+                if (processInfos.get(i).processName.equals(packageName)) {
+                    return true;
+                }
+            }
+            return false;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：判断 Activity 是否运行
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context     上下文
+     * ║ 参数：packageName 包名
+     * ║ 参数：maxNum      运行数
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：APP 版本码
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static boolean isActivityAlive(Context context, Class<?> clazz, int maxNum) {
+        if (context != null && clazz != null) {
+            maxNum = maxNum <= 0 ? 50 : maxNum;
+            Intent intent = new Intent(context, clazz);
+            ComponentName cmpName = intent.resolveActivity(context.getPackageManager());
+            if (cmpName != null) {
+                ActivityManager am = (ActivityManager) context.getSystemService(ACTIVITY_SERVICE);
+                List<ActivityManager.RunningTaskInfo> tasks = am.getRunningTasks(maxNum);
+                for (ActivityManager.RunningTaskInfo task : tasks) {
+                    if (task.baseActivity.equals(cmpName)) return true;
+                }
+            }
+            return false;
+        } else {
+            return false;
         }
     }
 

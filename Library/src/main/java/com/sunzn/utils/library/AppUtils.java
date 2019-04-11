@@ -295,4 +295,24 @@ public class AppUtils {
         }
     }
 
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：判断 Activity 是否运行
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context     上下文
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：进程名
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static String getProcessName(Context context) {
+        if (context == null) return null;
+        ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningAppProcessInfo processInfo : manager.getRunningAppProcesses()) {
+            if (processInfo.pid == android.os.Process.myPid()) {
+                return processInfo.processName;
+            }
+        }
+        return null;
+    }
+
 }

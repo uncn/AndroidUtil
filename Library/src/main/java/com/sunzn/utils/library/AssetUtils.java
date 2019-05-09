@@ -48,9 +48,6 @@ public class AssetUtils {
         AssetManager assetManager = context.getAssets();
         try {
             inputStream = assetManager.open(fileName);
-            if (inputStream == null) {
-                return null;
-            }
 
             BufferedInputStream bis = null;
             int length;

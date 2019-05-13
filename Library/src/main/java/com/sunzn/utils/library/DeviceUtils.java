@@ -48,7 +48,7 @@ public class DeviceUtils {
      * ║ 返回：String
      * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static String getDeviceId(@NonNull Context context) {
+    private static String getDeviceId(@NonNull Context context) {
         String ID = null;
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
             try {

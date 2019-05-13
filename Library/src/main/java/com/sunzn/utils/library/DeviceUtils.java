@@ -51,21 +51,37 @@ public class DeviceUtils {
     public static String getDeviceId(@NonNull Context context) {
         String ID = null;
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
-            TelephonyManager manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            if (manager != null) {
-                ID = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? manager.getImei() : manager.getDeviceId();
-                if (ID == null || ID.length() == 0) {
-                    ID = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? Build.getSerial() : Build.SERIAL;
+            try {
+                TelephonyManager manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+                if (manager != null) {
+                    ID = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? manager.getImei() : manager.getDeviceId();
+                    if (ID == null || ID.length() == 0) {
+                        ID = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? Build.getSerial() : Build.SERIAL;
+                    }
+                    if (ID == null || ID.length() == 0) {
+                        ID = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+                    }
+                    if (ID == null || ID.length() == 0) {
+                        ID = Settings.System.getString(context.getContentResolver(), Settings.System.ANDROID_ID);
+                    }
                 }
-                if (ID == null || ID.length() == 0) {
-                    ID = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
-                }
-                if (ID == null || ID.length() == 0) {
-                    ID = Settings.System.getString(context.getContentResolver(), Settings.System.ANDROID_ID);
-                }
+            } catch (Exception e) {
+                // TODO
             }
         }
         return ID;
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：获取设备 IMEI 或 SN
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：String
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static String getDeviceId(@NonNull Context context, @NonNull String value) {
+        String ID = getDeviceId(context);
+        return (ID == null || ID.length() == 0) ? value : ID;
     }
 
 }

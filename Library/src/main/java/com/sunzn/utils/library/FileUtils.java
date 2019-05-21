@@ -1,6 +1,16 @@
 package com.sunzn.utils.library;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
+
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class FileUtils {
 
@@ -24,6 +34,61 @@ public class FileUtils {
         } else {
             return StringUtils.NULL;
         }
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：保存图片到相册
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context  上下文
+     * ║ 参数：bmp      位图
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：void
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public void saveImageToGallery(Context context, Bitmap bmp) {
+        saveImageToGallery(context, "DCIM", bmp);
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：保存图片到相册
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context  上下文
+     * ║ 参数：child    子目录
+     * ║ 参数：bmp      位图
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：void
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public void saveImageToGallery(Context context, String child, Bitmap bmp) {
+        // 首先保存图片
+        File appDir = new File(Environment.getExternalStorageDirectory(), child);
+        if (!appDir.exists()) {
+            appDir.mkdir();
+        }
+        String fileName = System.currentTimeMillis() + ".jpg";
+        File file = new File(appDir, fileName);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            bmp.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.flush();
+            fos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // 其次把文件插入到系统图库
+        try {
+            MediaStore.Images.Media.insertImage(context.getContentResolver(), file.getAbsolutePath(), fileName, null);
+            ToastUtils.success(context, "保存成功");
+        } catch (FileNotFoundException e) {
+            ToastUtils.failure(context, "保存失败");
+            e.printStackTrace();
+        }
+        // 最后通知图库更新
+        context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(appDir.getPath()))));
     }
 
 }

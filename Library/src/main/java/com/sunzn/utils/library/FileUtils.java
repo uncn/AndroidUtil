@@ -46,7 +46,7 @@ public class FileUtils {
      * ║ 返回：void
      * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public void saveImageToGallery(Context context, Bitmap bmp) {
+    public static void saveImageToGallery(Context context, Bitmap bmp) {
         saveImageToGallery(context, "DCIM", bmp);
     }
 
@@ -61,7 +61,7 @@ public class FileUtils {
      * ║ 返回：void
      * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public void saveImageToGallery(Context context, String child, Bitmap bmp) {
+    public static void saveImageToGallery(Context context, String child, Bitmap bmp) {
         // 首先保存图片
         File appDir = new File(Environment.getExternalStorageDirectory(), child);
         if (!appDir.exists()) {

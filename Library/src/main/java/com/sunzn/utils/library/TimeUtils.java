@@ -250,7 +250,15 @@ public class TimeUtils {
      * ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════
      */
     public static String getMediaTime(int secs) {
-        return FormatUtils.format("%02d", secs / 60) + ":" + FormatUtils.format("%02d", secs % 60);
+        if (secs <= 0) {
+            return "00:00:00";
+        } else if (secs < 60) {
+            return FormatUtils.format("00:00:%02d", secs % 60);
+        } else if (secs < 3600) {
+            return FormatUtils.format("00:%02d:%02d", secs / 60, secs % 60);
+        } else {
+            return FormatUtils.format("%02d:%02d:%02d", secs / 3600, secs % 3600 / 60, secs % 60);
+        }
     }
 
     /**

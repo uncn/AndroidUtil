@@ -1,5 +1,10 @@
 package com.sunzn.utils.library;
 
+import com.sunzn.utils.library.port.Connector;
+
+import java.util.List;
+import java.util.Objects;
+
 /**
  * Created by sunzn on 2016/12/7.
  */
@@ -77,7 +82,7 @@ public class StringUtils {
      * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
     public static boolean equals(String s, String t) {
-        return s == null ? (t == null) : s.equals(t);
+        return Objects.equals(s, t);
     }
 
     /**
@@ -104,6 +109,24 @@ public class StringUtils {
      */
     public static String getNonNullString(String s) {
         return s == null ? NULL : s;
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：返回一个用给定字符连接的String
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：data,mark,connector
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：String
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static <T> String connectString(List<T> data, String mark, Connector<T> connector) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < (data == null ? 0 : data.size()); i++) {
+            builder.append(connector.getString(data.get(i)));
+            builder.append(i == data.size() - 1 ? "" : mark);
+        }
+        return builder.toString();
     }
 
 }

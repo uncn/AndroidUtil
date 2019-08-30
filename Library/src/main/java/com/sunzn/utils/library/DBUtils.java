@@ -37,7 +37,7 @@ public class DBUtils {
         }
     }
 
-    private static void copyFile(Context context, String source) {
+    public static void copyFile(Context context, String source) {
         File target = context.getDatabasePath(source);
         try {
             AssetManager manager = context.getAssets();

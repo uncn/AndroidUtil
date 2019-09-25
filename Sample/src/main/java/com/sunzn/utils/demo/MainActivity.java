@@ -3,10 +3,12 @@ package com.sunzn.utils.demo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.sunzn.utils.library.ColorUtils;
 import com.sunzn.utils.library.StringUtils;
+import com.sunzn.utils.library.SystemUtils;
 import com.sunzn.utils.library.TimeUtils;
 import com.sunzn.utils.library.port.Connector;
 
@@ -49,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public String getString(String s) {
                 return null;
+            }
+        });
+
+        zz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SystemUtils.openAppSettings(MainActivity.this, getPackageName());
             }
         });
 

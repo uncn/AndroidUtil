@@ -84,7 +84,7 @@ public class MD5Utils {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(source.getBytes());
-            byte b[] = md.digest();
+            byte[] b = md.digest();
             int i;
             StringBuilder buf = new StringBuilder("");
             for (byte aB : b) {

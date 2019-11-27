@@ -10,7 +10,6 @@ import android.provider.MediaStore;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 
 public class FileUtils {
 
@@ -46,8 +45,8 @@ public class FileUtils {
      * ║ 返回：void
      * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void saveImageToGallery(Context context, Bitmap bmp) {
-        saveImageToGallery(context, "DCIM", bmp);
+    public static String saveImageToGallery(Context context, Bitmap bmp) {
+        return saveImageToGallery(context, "DCIM", bmp);
     }
 
     /**
@@ -61,7 +60,7 @@ public class FileUtils {
      * ║ 返回：void
      * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static void saveImageToGallery(Context context, String child, Bitmap bmp) {
+    public static String saveImageToGallery(Context context, String child, Bitmap bmp) {
         // 首先保存图片
         File appDir = new File(Environment.getExternalStorageDirectory(), child);
         if (!appDir.exists()) {
@@ -74,9 +73,7 @@ public class FileUtils {
             bmp.compress(Bitmap.CompressFormat.JPEG, 100, fos);
             fos.flush();
             fos.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         // 其次把文件插入到系统图库
@@ -89,6 +86,8 @@ public class FileUtils {
         }
         // 最后通知图库更新
         context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(appDir.getPath()))));
+
+        return file.getAbsolutePath();
     }
 
 }

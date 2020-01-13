@@ -78,23 +78,28 @@ public class FileUtils {
             values.put(MediaStore.Images.Media.RELATIVE_PATH, "DCIM/Dian/");
             Uri url = null;
             String stringUrl = null;    /* value to be returned */
-            ContentResolver cr = context.getContentResolver();
+            ContentResolver resolver = context.getContentResolver();
             try {
                 Uri uri = MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY);
-                url = cr.insert(uri, values);
+                url = resolver.insert(uri, values);
                 if (url == null) {
                     return null;
                 }
-                ParcelFileDescriptor parcelFileDescriptor = cr.openFileDescriptor(url, "w");
+                ParcelFileDescriptor parcelFileDescriptor = resolver.openFileDescriptor(url, "w");
                 FileOutputStream fileOutputStream = new FileOutputStream(parcelFileDescriptor.getFileDescriptor());
                 bmp.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
                 fileOutputStream.flush();
                 fileOutputStream.close();
+
+                values.clear();
+                values.put(MediaStore.Images.Media.IS_PENDING, 0);
+                resolver.update(uri, values, null, null);
+
                 ToastUtils.success(context, "保存成功");
             } catch (Exception e) {
                 Log.e(TAG, "Failed to insert media file", e);
                 if (url != null) {
-                    cr.delete(url, null, null);
+                    resolver.delete(url, null, null);
                     url = null;
                 }
                 ToastUtils.failure(context, "保存失败");

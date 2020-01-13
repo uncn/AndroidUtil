@@ -2,7 +2,7 @@ package com.sunzn.utils.library;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;

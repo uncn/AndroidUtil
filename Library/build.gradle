@@ -28,5 +28,4 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
     api 'com.github.apache:commons-io:2.5'
-    api 'com.google.android:support-v4:r7'
 }

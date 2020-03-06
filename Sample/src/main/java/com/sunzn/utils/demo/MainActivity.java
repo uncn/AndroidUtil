@@ -1,10 +1,11 @@
 package com.sunzn.utils.demo;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.sunzn.utils.library.ColorUtils;
 import com.sunzn.utils.library.StringUtils;

@@ -93,7 +93,7 @@ public class FileUtils {
 
                 values.clear();
                 values.put(MediaStore.Images.Media.IS_PENDING, 0);
-                resolver.update(uri, values, null, null);
+                resolver.update(url, values, null, null);
 
                 ToastUtils.success(context, "保存成功");
             } catch (Exception e) {

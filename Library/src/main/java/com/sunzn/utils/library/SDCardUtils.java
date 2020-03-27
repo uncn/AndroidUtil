@@ -70,17 +70,17 @@ public class SDCardUtils {
      * ╔════════════════════════════════════════════════════════════════════════════════════════════
      * ║ 名称：获取SD卡剩余空间
      * ╟────────────────────────────────────────────────────────────────────────────────────────────
-     * ║ 返回：String
+     * ║ 返回：Long
      * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
-    public static String getFreeSpace() {
-        if (!isSDCardEnable()) return "sdcard unable!";
+    public static long getFreeSpace() {
+        if (!isSDCardEnable()) return 0;
         StatFs stat = new StatFs(getSDCardPath());
         long blockSize, availableBlocks;
         availableBlocks = stat.getAvailableBlocksLong();
         blockSize = stat.getBlockSizeLong();
-        return ConvertUtils.byte2FitMemorySize(availableBlocks * blockSize);
+        return availableBlocks * blockSize;
     }
 
 }

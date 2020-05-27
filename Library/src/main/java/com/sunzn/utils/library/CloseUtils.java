@@ -24,7 +24,7 @@ public class CloseUtils {
             if (closeable != null) {
                 try {
                     closeable.close();
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }

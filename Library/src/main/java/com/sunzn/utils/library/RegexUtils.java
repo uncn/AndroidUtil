@@ -267,6 +267,28 @@ public class RegexUtils {
      * ║ 名称：替换所有正则匹配的部分
      * ╟────────────────────────────────────────────────────────────────────────────────────────────
      * ║ 参数：input       要替换的字符串
+     * ║ 参数：regex       正则表达式
+     * ║ 参数：replacement 代替者
+     * ║ 参数：flags       匹配标志 {@link Pattern.CASE_INSENSITIVE}, {@link Pattern.MULTILINE},
+     * ║                           {@link Pattern.DOTALL},{@link Pattern.UNICODE_CASE},
+     * ║                           {@link Pattern.CANON_EQ}, {@link Pattern.UNIX_LINES},
+     * ║                           {@link Pattern.LITERAL}, {@link Pattern.UNICODE_CHARACTER_CLASS},
+     * ║                           {@link Pattern.COMMENTS}
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：替换所有正则匹配的部分
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    @SuppressWarnings("JavadocReference")
+    public static String getReplaceAll(String input, String regex, String replacement, int flags) {
+        if (input == null) return null;
+        return Pattern.compile(regex, flags).matcher(input).replaceAll(replacement);
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：替换所有正则匹配的部分
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：input       要替换的字符串
      * ║ 参数：regex       正则表达式数组
      * ║ 参数：replacement 代替者
      * ╟────────────────────────────────────────────────────────────────────────────────────────────

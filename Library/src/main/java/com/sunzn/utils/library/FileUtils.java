@@ -5,6 +5,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -42,6 +44,24 @@ public class FileUtils {
             return fileName.substring(fileName.lastIndexOf(".") + 1);
         } else {
             return StringUtils.NULL;
+        }
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：保存图片到相册
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：context   上下文
+     * ║ 参数：drawable  位图
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：String    图片路径
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static String saveImageToGallery(Context context, Drawable drawable) {
+        if (drawable instanceof BitmapDrawable) {
+            return saveImageToGallery(context, ((BitmapDrawable) drawable).getBitmap());
+        } else {
+            return null;
         }
     }
 

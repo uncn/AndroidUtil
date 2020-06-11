@@ -13,8 +13,11 @@ import android.provider.MediaStore;
 import android.util.Log;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 import static android.content.ContentValues.TAG;
 
@@ -136,6 +139,65 @@ public class FileUtils {
             context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(appDir.getPath()))));
 
             return file.getAbsolutePath();
+        }
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：执行文件到文件的拷贝
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：srcFile   源文件
+     * ║ 参数：destFile  目标文件
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：boolean   成功：true  失败：false
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static boolean copyFile(File srcFile, File destFile) {
+        boolean result;
+        try {
+            try (InputStream in = new FileInputStream(srcFile)) {
+                result = saveToFile(in, destFile);
+            }
+        } catch (IOException e) {
+            result = false;
+        }
+        return result;
+    }
+
+    /**
+     * ╔════════════════════════════════════════════════════════════════════════════════════════════
+     * ║ 名称：输入流输出到目标文件
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 参数：inputStream  输入流
+     * ║ 参数：destFile     目标文件
+     * ╟────────────────────────────────────────────────────────────────────────────────────────────
+     * ║ 返回：boolean   成功：true  失败：false
+     * ╚════════════════════════════════════════════════════════════════════════════════════════════
+     */
+    public static boolean saveToFile(InputStream inputStream, File destFile) {
+        try {
+            if (destFile.exists()) {
+                destFile.delete();
+            }
+            FileOutputStream out = new FileOutputStream(destFile);
+            try {
+                byte[] buffer = new byte[4096];
+                int bytesRead;
+                while ((bytesRead = inputStream.read(buffer)) >= 0) {
+                    out.write(buffer, 0, bytesRead);
+                }
+            } finally {
+                out.flush();
+                try {
+                    out.getFD().sync();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                out.close();
+            }
+            return true;
+        } catch (IOException e) {
+            return false;
         }
     }
 

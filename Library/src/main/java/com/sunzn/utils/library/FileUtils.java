@@ -57,26 +57,12 @@ public class FileUtils {
      * ║ 返回：String    图片路径
      * ╚════════════════════════════════════════════════════════════════════════════════════════════
      */
-    public static String saveImageToGallery(Context context, Drawable drawable) {
+    public static String saveImageToGallery(Context context, String child, Drawable drawable) {
         if (drawable instanceof BitmapDrawable) {
-            return saveImageToGallery(context, ((BitmapDrawable) drawable).getBitmap());
+            return saveImageToGallery(context, child, ((BitmapDrawable) drawable).getBitmap());
         } else {
             return null;
         }
-    }
-
-    /**
-     * ╔════════════════════════════════════════════════════════════════════════════════════════════
-     * ║ 名称：保存图片到相册
-     * ╟────────────────────────────────────────────────────────────────────────────────────────────
-     * ║ 参数：context  上下文
-     * ║ 参数：bmp      位图
-     * ╟────────────────────────────────────────────────────────────────────────────────────────────
-     * ║ 返回：void
-     * ╚════════════════════════════════════════════════════════════════════════════════════════════
-     */
-    public static String saveImageToGallery(Context context, Bitmap bmp) {
-        return saveImageToGallery(context, "DCIM", bmp);
     }
 
     /**
@@ -98,7 +84,7 @@ public class FileUtils {
             values.put(MediaStore.Images.Media.DESCRIPTION, "");
             values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
             values.put(MediaStore.Images.Media.IS_PENDING, 1);
-            values.put(MediaStore.Images.Media.RELATIVE_PATH, "DCIM/Dian/");
+            values.put(MediaStore.Images.Media.RELATIVE_PATH, "DCIM/" + child + "/");
             Uri url = null;
             String stringUrl = null;    /* value to be returned */
             ContentResolver resolver = context.getContentResolver();
